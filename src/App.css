@@ -1,38 +1,269 @@
-.App {
-  text-align: center;
+.kanban-board {
+  font-family: Arial, sans-serif;
+  background-color: #f4f5f8;
+  padding: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.board-header {
   display: flex;
-  flex-direction: column;
+  justify-content: flex-start;
+  padding: 10px 0;
+  margin-bottom: 20px;
+}
+
+.controls {
+  position: relative;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.dropdown {
+  position: relative;
+  display: inline-block;
+  margin-right: 15px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.dropbtn {
+  background-color: #fff;
+  color: #333;
+  padding: 5px 10px;
+  font-size: 12px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dropbtn p {
+  margin: 0 10px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  z-index: 1;
+  border-radius: 4px;
+  flex-direction: column;
+  border: solid #b9b8b8 1px;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content label {
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.dropdown-content select {
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 5px;
+}
+
+.label-logo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.img-logo {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.header-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.columns {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.column {
+  background-color: #f4f5f8;
+  border-radius: 8px;
+  padding: 20px;
+  width: 300px;
+  min-height: 100px;
+}
+
+.column-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.column-title {
+  font-size: 14px;
+  color: #333;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.task-count {
+  padding: 2px 6px;
+  font-size: 12px;
+  color: #555;
+}
+
+.column-actions {
+  display: flex;
+  gap: 5px;
+}
+
+.task-card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.task-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: #888;
+}
+
+.task-id {
+  font-weight: bold;
+  color: #333;
+}
+
+.avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.task-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.task-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.task-priority {
+  font-size: 12px;
+  color: #555;
+}
+
+.task-id {
+  color: #888;
+  font-weight: normal;
+}
+
+.task-tag {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #eef0f2;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #555;
+}
+
+.column.Urgent .task-priority {
+  color: #ff5630;
+}
+
+.column.High .task-priority {
+  color: #ff8b00;
+}
+
+.column.Medium .task-priority {
+  color: #ffc400;
+}
+
+.column.Low .task-priority {
+  color: #2ecc71;
+} 
+
+.sortTag {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.sortTag label {
+  margin-right: 10px;
+  font-size: 12px;
+  color: #888;
+  font-weight: normal;
+}
+
+.sortTag select {
+  padding: 5px;
+  font-size: 12px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.task-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.feature-request-btn {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid #888;
+  color: #888;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background-color 0.3s;
+  height: 25px;
+}
+
+.circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #888;
+  margin-right: 5px;
+}
+
+.three-dash-btn {
+  background-color: white;
+  border: 1px solid #888;
+  border-radius: 4px;
+  padding: 5px;
+  cursor: pointer;
+  height: 25px;
+  align-items: center;
+}
+
+.three-dash-btn img {
+  width: 20px;
+  height: 20px;
 }
